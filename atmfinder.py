@@ -31,7 +31,9 @@ def finder(query):
     	# Print value corresponding to the 
     	# 'name' key at the ith index of y 
         #print(y[i][ 'formatted_address'])
-        s.append((y[i][ 'name'], y[i][ 'formatted_address']))
+        lat = y[i]['geometry']['location']['lat']
+        lng = y[i]['geometry']['location']['lng']
+        s.append((y[i][ 'name'], y[i][ 'formatted_address'] , [lat,lng]))
     return s
 
 def main():
