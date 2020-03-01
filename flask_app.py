@@ -17,7 +17,7 @@ def atm_near_me():
 
 # /branches/<bank-name>?loc=address+string
 @app.route('/branches/<bank_name>', methods=['GET'])
-def atm_near_me(bank_name):
+def branch_near_me(bank_name):
     location = request.args.get('loc')
     return jsonify(finder(bank_name+" branches near "+location))
 
