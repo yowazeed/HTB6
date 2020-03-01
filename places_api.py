@@ -33,7 +33,8 @@ def finder(query):
         #print(y[i][ 'formatted_address'])
         lat = y[i]['geometry']['location']['lat']
         lng = y[i]['geometry']['location']['lng']
-        s.append((y[i][ 'name'], y[i][ 'formatted_address'] , [lat,lng]))
+        map_url = "https://maps.google.com/?q="+str(lat)+','+str(lng)
+        s.append((y[i][ 'name'], y[i][ 'formatted_address'] , map_url))
     return s
 
 def main():
