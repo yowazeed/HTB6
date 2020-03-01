@@ -16,7 +16,7 @@ def finder(query):
         lng = y[i]['geometry']['location']['lng']
         origin = "55.9349405,-3.2151615"
         dest = str(lat) + "," + str(lng)
-        stat_map_url = f"https://maps.googleapis.com/maps/api/staticmap?center=Edinburgh,UK&zoom=15&scale=1&size=600x600&maptype=roadmap&key=AIzaSyBzjLAINirGIEr8AaYYzhU7G8bxTgeDbGs&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C{origin}&markers=size:mid%7Ccolor:0xff0000%7Clabel:2%7C{dest}"
+        stat_map_url = f"https://maps.googleapis.com/maps/api/staticmap?center=Edinburgh,UK&zoom=13&scale=1&size=600x600&maptype=roadmap&key=AIzaSyBzjLAINirGIEr8AaYYzhU7G8bxTgeDbGs&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C{origin}&markers=size:mid%7Ccolor:0xff0000%7Clabel:2%7C{dest}"
         #resp = requests.get(url=stat_map_url).json()
         #print(resp)
         #polyline_data = resp['routes'][0]['legs'][0]['distance']['text']
