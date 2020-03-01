@@ -5,6 +5,8 @@ from places_api import finder
 app = Flask(__name__)
 CORS(app)
 
+# BASE_URL = https://munshi-ji.herokuapp.com
+
 @app.route('/', methods=['GET'])
 def index():
     return jsonify("Hello to our API.")
