@@ -1,48 +1,34 @@
-# Python program to get a set of 
-# places according to your search 
-# query using Google Places API 
+import json
+import requests
 
-# importing required modules 
-import requests, json 
-
-# enter your api key here 
 api_key = 'AIzaSyB2i7Jn9JpU1qlHRmTcm0tf_hatN0wLeHM'
 
-# url variable store url 
 url = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
 
-# The text string on which to search 
 
 def finder(query):
-    # get method of requests module 
-    # return response object 
-    r = requests.get(url + 'query=' + query +'&key=' + api_key) 
-    # json method of response object convert 
-    # json format data into python format data 
+    r = requests.get(url + 'query=' + query + '&key=' + api_key)
     x = r.json()
-    print(x)
-    # now x contains list of nested dictionaries 
-    # we know dictionary contain key value pair 
-    # store the value of result key in variable y 
-    y = x['results'] 
-    #print(y)
-    # keep looping upto length of y 
-    #print(y)
+    y = x['results']
     s = []
-    for i in range(len(y)): 	
-    	# Print value corresponding to the 
-    	# 'name' key at the ith index of y 
-        #print(y[i][ 'formatted_address'])
+    for i in range(len(y)):
         lat = y[i]['geometry']['location']['lat']
         lng = y[i]['geometry']['location']['lng']
-        map_url = "https://maps.google.com/?q="+str(lat)+','+str(lng)
-        s.append((y[i]['name'], y[i]['formatted_address'] , map_url))
+        origin = "55.9349405,-3.2151615"
+        dest = str(lat) + "," + str(lng)
+        stat_map_url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={dest}&key={api_key}"
+        resp = requests.get(url=stat_map_url).json()
+        polyline_data = resp.routes[0].overview_polyline.points
+        static_map = f"https://maps.googleapis.com/maps/api/staticmap?markers=size:large|color:red|label:A|latA,longA&markers=size:large|color:red|label:C|latC,longC&markers=size:large|color:red|label:D|latD,longD&markers=size:large|color:red|label:B|latB,longB&path=weight:3|color:red|enc:{polyline_data}&size=300×300&key={api_key}"
+        s.append((y[i]['name'], y[i]['formatted_address'], static_map))
     return s
 
+
 def main():
-    query = input('Search query: ') 
-    s =finder(query)
+    query = input('Search query: ')
+    s = finder(query)
     print(s)
+
 
 if __name__ == "__main__":
     main()
