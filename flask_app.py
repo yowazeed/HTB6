@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import requests
 from places_api import finder
 
 app = Flask(__name__)
@@ -10,13 +9,16 @@ CORS(app)
 def index():
     return jsonify("Hello to our API.")
 
-@app.route('/atms/<location>', methods=['GET'])
-def atm_near_me(location):
+# /atms?loc=address+string
+@app.route('/atms', methods=['GET'])
+def atm_near_me():
+    location = request.args.get('loc')
     return jsonify(finder("atms near "+location))
 
-
-@app.route('/branches/<bank_name>/<location>', methods=['GET'])
-def atm_near_me(bank_name, location):
+# /branches/<bank-name>?loc=address+string
+@app.route('/branches/<bank_name>', methods=['GET'])
+def atm_near_me(bank_name):
+    location = request.args.get('loc')
     return jsonify(finder(bank_name+" branches near "+location))
 
 @app.route('/rec-personal-accounts/<spec>')
