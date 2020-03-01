@@ -1,7 +1,7 @@
 import json
 import requests
 
-api_key = 'AIzaSyB2i7Jn9JpU1qlHRmTcm0tf_hatN0wLeHM'
+api_key = 'AIzaSyBzjLAINirGIEr8AaYYzhU7G8bxTgeDbGs'
 
 url = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
 
@@ -16,11 +16,13 @@ def finder(query):
         lng = y[i]['geometry']['location']['lng']
         origin = "55.9349405,-3.2151615"
         dest = str(lat) + "," + str(lng)
-        stat_map_url = f"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={dest}&key={api_key}"
-        resp = requests.get(url=stat_map_url).json()
-        polyline_data = resp.routes[0].overview_polyline.points
-        static_map = f"https://maps.googleapis.com/maps/api/staticmap?markers=size:large|color:red|label:A|latA,longA&markers=size:large|color:red|label:C|latC,longC&markers=size:large|color:red|label:D|latD,longD&markers=size:large|color:red|label:B|latB,longB&path=weight:3|color:red|enc:{polyline_data}&size=300×300&key={api_key}"
-        s.append((y[i]['name'], y[i]['formatted_address'], static_map))
+        stat_map_url = f"https://maps.googleapis.com/maps/api/staticmap?center=Edinburgh,UK&zoom=15&scale=1&size=600x600&maptype=roadmap&key=AIzaSyBzjLAINirGIEr8AaYYzhU7G8bxTgeDbGs&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C{origin}&markers=size:mid%7Ccolor:0xff0000%7Clabel:2%7C{dest}"
+        #resp = requests.get(url=stat_map_url).json()
+        #print(resp)
+        #polyline_data = resp['routes'][0]['legs'][0]['distance']['text']
+        #print(polyline_data)
+        #static_map = f'https://maps.googleapis.com/maps/api/staticmap?size=400x400&center={origin}&zoom=4&maptype=roadmap&path=weight:3%7Ccolor:blue%7Cenc:{polyline_data}&key={api_key}'
+        s.append((y[i]['name'], y[i]['formatted_address'], stat_map_url))
     return s
 
 
