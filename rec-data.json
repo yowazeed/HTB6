@@ -1,0 +1,42 @@
+{
+    "Student": {
+        "Bank": "Santander UK",
+        "PCA": "Santander 1 2 3 Student Account",
+        "Overdraft": "0 percent upto £2000",
+        "Freebies": "4 Year rail card",
+        "Interest": "upto 3 percent",
+        "desc": ""
+    },
+    "International Student": {
+        "Bank": "Barclays",
+        "PCA": "Barclays Student Additions Account",
+        "Overdraft": "None",
+        "Freebies": "None",
+        "Interest": "No Interest",
+        "desc": "No monthly fees, free outgoing transfers and low fee for incoming transfers from outside EU."
+    },
+    "Graduate": {
+        "Bank": "Barclays",
+        "PCA": "Barclays Higher Education Account",
+        "Overdraft": "upto £3000 for 0 percent interest",
+        "Freebies": "Monthly rewards",
+        "Interest": "No Interest",
+        "desc": "Good if you want to ."
+    },
+    "Savings": {
+        "Bank": "Nationwide",
+        "PCA": "Nationwide Flexi Direct",
+        "Overdraft": "None",
+        "Freebies": "Monthly rewards",
+        "Interest": "5 percent AER",
+        "desc": "Highest in credit interest rate for any savings bank account."
+    },
+    "Switch": {
+        "Bank": "NatWest",
+        "PCA": "NatWest Reward",
+        "Overdraft": "None",
+        "Freebies": "175 pound upfront bonus and Monthly rewards",
+        "Interest": "None",
+        "desc": "Highest in credit interest rate for any savings bank account."
+    }
+}

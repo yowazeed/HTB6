@@ -19,11 +19,13 @@ def finder(query):
     r = requests.get(url + 'query=' + query +'&key=' + api_key) 
     # json method of response object convert 
     # json format data into python format data 
-    x = r.json() 
+    x = r.json()
+    print(x)
     # now x contains list of nested dictionaries 
     # we know dictionary contain key value pair 
     # store the value of result key in variable y 
     y = x['results'] 
+    #print(y)
     # keep looping upto length of y 
     #print(y)
     s = []
